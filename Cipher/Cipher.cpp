@@ -12,7 +12,6 @@ string encryption(string plaintext, string key)
 	int n = key.length();
 	int textlength = plaintext.length();
 	double temp = static_cast<double>(textlength) / n;
-	cout << temp << endl;
 	int modulo = textlength % n;
 	int m = ceil(temp);
 	int t = m - 1;
@@ -21,7 +20,6 @@ string encryption(string plaintext, string key)
 	char** tablica = new char*[m];
 	for (int i = 0; i < m; i++)
 		tablica[i] = new char[n];
-	cout << n << " " << textlength << " " << m <<" " << modulo << endl;
 	//wpisywanie tekstu do tablicy
 	for (int i = 0; i < m; i++)
 	{
@@ -32,14 +30,28 @@ string encryption(string plaintext, string key)
 				tablica[i][j] = plaintext[i*n + j];
 				
 			}
-			else if(i==t && j<modulo)
+			
+			else if (i == t && modulo == 0)
 			{
-				tablica[i][j] = plaintext[i*n + j];
+				
+				{
+					tablica[i][j] = plaintext[i*n + j];
+				}
+				
+			}
+			else if (i == t && j<modulo)
+			{
+
+				{
+					tablica[i][j] = plaintext[i*n + j];
+				}
+
 			}
 			else
 			{
 				tablica[i][j] = 'x';
 			}
+			
 			cout << tablica[i][j];
 		}
 		cout << endl;
@@ -90,7 +102,6 @@ string decrytption(string encrypted, string key)
 	int n = key.length();
 	int textlength = encrypted.length();
 	double temp = static_cast<double>(textlength) / n;
-	cout << temp << endl;
 	int modulo = textlength % n;
 	int m = ceil(temp);
 	int t = m - 1;
@@ -99,7 +110,6 @@ string decrytption(string encrypted, string key)
 	char** tablica = new char*[m];
 	for (int i = 0; i < m; i++)
 		tablica[i] = new char[n];
-	cout << n << " " << textlength << " " << m << " " << modulo << endl;
 	//wpisywanie klucza do tablicy
 	for (int i = 0; i < n; i++)
 	{
