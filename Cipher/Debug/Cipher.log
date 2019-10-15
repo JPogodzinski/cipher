@@ -1,4 +1,4 @@
 ﻿  Cipher.cpp
-c:\dev\c++\cipher\cipher\cipher\cipher.cpp(16): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\dev\c++\cipher\cipher\cipher\cipher.cpp(106): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\dev\c++\cipher\cipher\cipher\cipher.cpp(17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\dev\c++\cipher\cipher\cipher\cipher.cpp(107): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
   Cipher.vcxproj -> C:\dev\C++\cipher\Cipher\Debug\Cipher.exe

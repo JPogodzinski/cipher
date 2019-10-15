@@ -3,6 +3,7 @@
 #include "pch.h"
 #include <iostream>
 #include <string>
+#include <fstream>
 
 using namespace std;
 
@@ -188,12 +189,53 @@ int main()
 	//regex [A-Za-z0-9 _.,!"'/$]*
 	string plaintext, encrypted, decrypted, key;
 	key = "maroko";
-	std::cout << "Podaj swoj tekst"<<endl;
-	std::cin >> plaintext;
-	encrypted = encryption(plaintext, key);
-	std::cout << "Zakodowany tekst " << endl;
-	std::cout << encrypted << endl;
-	decrypted = decrytption(encrypted, key);
-	std::cout << "Zdekodowany tekst " << endl;
-	std::cout << decrypted << endl;
+	int choice = 0;
+	std::cout << "Podaj klucz" << endl;
+	std::cin >> key;
+	std::cout << "Plik(1) czy tekst(2):" << endl;
+	std::cin >> choice;
+	if (choice == 1)
+	{
+		ofstream encoded_file, decoded_file;
+		ifstream plaintext_file;
+		string name_of_file;
+		string line;
+		std::cout << "Podaj nazwe pliku do zakodowania" << endl;
+		std::cin >> name_of_file;
+		plaintext_file.open(name_of_file);
+		if (plaintext_file.is_open())
+		{
+			while (getline(plaintext_file, line))
+			{
+				plaintext += line;
+			}
+			plaintext_file.close();
+		}
+			
+		else cout << "Unable to open file";
+		encrypted = encryption(plaintext, key);
+		encoded_file.open("encoded.txt");
+		encoded_file << encrypted;
+		encoded_file.close();
+		decrypted = decrytption(encrypted, key);
+		decoded_file.open("decoded.txt");
+		decoded_file << decrypted;
+		decoded_file.close();
+	}
+	else if (choice == 2)
+	{
+		std::cout << "Podaj swoj tekst" << endl;
+		std::cin >> plaintext;
+		encrypted = encryption(plaintext, key);
+		std::cout << "Zakodowany tekst " << endl;
+		std::cout << encrypted << endl;
+		decrypted = decrytption(encrypted, key);
+		std::cout << "Zdekodowany tekst " << endl;
+		std::cout << decrypted << endl;
+	}
+	else
+	{
+		std::cout << "Bledny wybor opcji" << endl;
+	}
+	
 }
